@@ -13,7 +13,7 @@ const RobotWrapper = styled.div`
 const Robot = ({ robot }) => {
   return (
     <RobotWrapper>
-      <p>{robot.name}</p>
+      <h2>{robot.name}</h2>
       <img src={robot.imageUrl} alt={robot.name} width="300" />
       <p>Speed: {robot.speed}</p>
       <p>Resistance: {robot.resistance}</p>
