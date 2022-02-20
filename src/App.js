@@ -1,24 +1,25 @@
 import "./App.css";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { loadRobotsThunk } from "./redux/thunks/robotsThunks";
-import RobotsList from "./components/RobotsList/RobotsList";
+import { Navigate, Route, Routes } from "react-router-dom";
+import RobotsPage from "./pages/RobotsPage";
+import RobotPage from "./pages/RobotPage";
+import NewRobotPage from "./pages/NewRobotPage";
+import EditRobotPage from "./pages/EditRobotPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
-  const robots = useSelector((state) => state.robots);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadRobotsThunk);
-  }, [dispatch]);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>This is going to be a ROBOTS app</h1>
-        <RobotsList robots={robots} />
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/home" element={<RobotsPage />} />
+        <Route path="/robot">
+          <Route path=":id" element={<RobotPage />} />
+          <Route path="new" element={<NewRobotPage />} />
+          <Route path="edit/:id" element={<EditRobotPage />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 };
 
