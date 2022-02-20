@@ -9,6 +9,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 const App = () => {
   return (
     <>
+      <h1>Beringar Robots Catalogue</h1>
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<RobotsPage />} />
