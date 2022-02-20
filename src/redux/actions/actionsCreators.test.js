@@ -1,4 +1,8 @@
-import { loadRobotsAction } from "./actionsCreators";
+import {
+  loadRobotsAction,
+  loadRobotAction,
+  deleteRobotAction,
+} from "./actionsCreators";
 import { actionsTypes } from "./actionsTypes";
 
 describe("Given an ActionsCreator set", () => {
@@ -12,6 +16,28 @@ describe("Given an ActionsCreator set", () => {
       const expectedAction = { type: loadRobotsType, robots: mockObject };
 
       const action = loadRobotsAction(mockObject);
+      expect(action).toEqual(expectedAction);
+    });
+  });
+
+  describe("When the function loadRobotAction is called", () => {
+    test("Then it should return an object with type load-robot and the object passed", () => {
+      const loadRobotType = actionsTypes.loadRobot;
+      const mockObject = { robot: { test: "test" } };
+      const expectedAction = { type: loadRobotType, robot: mockObject };
+
+      const action = loadRobotAction(mockObject);
+      expect(action).toEqual(expectedAction);
+    });
+  });
+
+  describe("When the function deleteTodoAction is called", () => {
+    test("Then it should return an object with type delete-robot and the id passed", () => {
+      const deleteRobotType = actionsTypes.deleteRobot;
+      const mockId = 3;
+      const expectedAction = { type: deleteRobotType, id: mockId };
+
+      const action = deleteRobotAction(mockId);
       expect(action).toEqual(expectedAction);
     });
   });
