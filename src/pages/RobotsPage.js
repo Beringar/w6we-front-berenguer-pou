@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loadRobotsThunk } from "./redux/thunks/robotsThunks";
-import RobotsList from "./components/RobotsList/RobotsList";
+import { loadRobotsThunk } from "../redux/thunks/robotsThunks";
+import RobotsList from "../components/RobotsList/RobotsList";
 
 const RobotsPage = () => {
   const robots = useSelector((state) => state.robots);
