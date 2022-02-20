@@ -10,4 +10,10 @@ export const handlers = [
       ])
     );
   }),
+  rest.get(`${process.env.REACT_APP_HEROKKU_API_URL}3`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ id: 3, name: "robot3" }));
+  }),
+  rest.delete(`${process.env.REACT_APP_HEROKKU_API_URL}15`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ id: 15 }));
+  }),
 ];
