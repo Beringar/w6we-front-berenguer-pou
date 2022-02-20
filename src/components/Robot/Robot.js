@@ -5,6 +5,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteRobotThunk } from "../../redux/thunks/robotsThunks";
 
 import styled from "styled-components";
 
@@ -16,13 +18,19 @@ const RobotWrapper = styled.div`
 `;
 
 const Robot = ({ className, robot }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const deleteRobot = () => dispatch(deleteRobotThunk(robot.id));
+
   const goToRobotPage = (id) => {
     navigate(`/robot/${id}`);
   };
+
   const goToEditPage = (id) => {
     navigate(`/robot/edit/${id}`);
   };
+
   return (
     <RobotWrapper>
       <h2>{robot.name}</h2>
@@ -49,7 +57,7 @@ const Robot = ({ className, robot }) => {
       <FontAwesomeIcon
         className="robot-icons"
         icon={faTrashCan}
-        onClick={() => null}
+        onClick={deleteRobot}
         size="2x"
       />
     </RobotWrapper>
