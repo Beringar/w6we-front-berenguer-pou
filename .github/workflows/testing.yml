@@ -1,6 +1,8 @@
 name: Testing on push
 
 on: push
+env:
+  REACT_APP_HEROKKU_API_URL: ${{secrets.REACT_APP_HEROKKU_API_URL}}
 
 jobs:
   test:
