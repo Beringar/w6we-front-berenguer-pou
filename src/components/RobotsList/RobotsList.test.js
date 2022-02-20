@@ -1,7 +1,9 @@
-import { screen, render } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import RobotsList from "./RobotsList";
+import { BrowserRouter } from "react-router-dom";
+import renderWithProviders from "../../setupTests";
 
-describe("Given a TodosList component", () => {
+describe("Given a RobotsList component", () => {
   describe("When it is rendered with an array of 2 robots", () => {
     test("Then it should show a list with the two robots", () => {
       const robots = [
@@ -21,7 +23,11 @@ describe("Given a TodosList component", () => {
         },
       ];
 
-      render(<RobotsList robots={robots} />);
+      renderWithProviders(
+        <BrowserRouter>
+          <RobotsList robots={robots} />
+        </BrowserRouter>
+      );
 
       const listOfRobots = screen.getAllByRole("listitem").length;
 

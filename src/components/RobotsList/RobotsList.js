@@ -15,7 +15,7 @@ const RobotsList = ({ robots }) => (
   <RobotsListWrapper>
     {robots.map((robot) => (
       <li key={robot.id}>
-        <Robot robot={robot} />
+        <Robot className="robot-card" robot={robot} />
       </li>
     ))}
   </RobotsListWrapper>
