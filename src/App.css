@@ -12,6 +12,21 @@
   color: white;
 }
 
+input[type="range"].range-slider {
+  width: 280px;
+}
+
+input {
+  width: 280px;
+}
+
+h3 {
+  margin-bottom: 1.2em;
+}
+.main {
+  margin: 25px;
+}
+
 .robot-card__buttons-wrapper {
   display: flex;
   gap: 15px;

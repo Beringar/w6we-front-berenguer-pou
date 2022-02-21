@@ -18,8 +18,7 @@ const RobotForm = ({ data = null }) => {
       }
     : {
         name: "",
-        imageUrl:
-          "https://s1.eestatic.com/2019/04/08/actualidad/actualidad_389474111_130510496_1024x576.jpg",
+        imageUrl: "",
         speed: 5,
         resistance: 5,
       };
@@ -74,6 +73,7 @@ const RobotForm = ({ data = null }) => {
         autoComplete="off"
         noValidate
       >
+        <h2>{data ? `Update Robot` : `Create Robot`}</h2>
         <div className="form-block">
           {data && <p>{`Robot Id: ${data.id}`}</p>}
           <label title="name" htmlFor="name">
@@ -106,6 +106,7 @@ const RobotForm = ({ data = null }) => {
           />
         </div>
         <div className="form-block">
+          <h3>Speed:</h3>
           <RangeSlider
             id="speedRange"
             value={formData.speed}
@@ -121,6 +122,7 @@ const RobotForm = ({ data = null }) => {
           />
         </div>
         <div className="form-block">
+          <h3>Resistance:</h3>
           <RangeSlider
             id="resistanceRange"
             value={formData.resistance}

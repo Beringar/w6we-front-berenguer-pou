@@ -1,13 +1,297 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:root {
+  --form-control-color: #e27396;
+  --form-control-disabled: #959495;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: #00acbb;
+  background-color: #fdf6fe;
+}
+
+.form-recipe {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.form-image {
+  width: 280px;
+  padding: 10px 0;
+}
+
+.form-block {
+  margin-bottom: 10px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  min-height: 80vh;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+input:focus {
+  border-color: #007eff;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 0 3px rgba(0, 126, 255, 0.1);
+  outline: none;
+}
+
+input.error {
+  border-color: red;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.input-feedback {
+  color: red;
+  margin-top: 0.25rem;
+}
+
+.search-results-msg {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+  border-style: none;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  background-color: #151f28;
+  color: #b3dfe2;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 50%;
+}
+
+label.ingredients-label {
+  font-size: 1.2em;
+  font-weight: bold;
+  display: inline;
+  padding: 0 10px;
+}
+
+input.form-input-ingredients {
+  width: 300px;
+  line-height: 1.2em;
+  font-size: 1.2em;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  display: inline;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.search-recipes-form {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: center;
+}
+
+.form-control {
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 1.2em;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.form-control + .form-control {
+  margin-top: 0.8em;
+}
+
+.form-control--disabled {
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  -moz-appearance: none;
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  -webkit-clip-path: polygon(
+    14% 44%,
+    0 65%,
+    50% 100%,
+    100% 16%,
+    80% 0%,
+    43% 62%
+  );
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+.day-letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+.day-letter--active {
+  border-radius: 50%;
+  border-style: solid;
+}
+.recipe-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 90%;
+}
+
+.recipe-digest {
+  height: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  @media (min-width: 530px) {
+    display: none;
+  }
+}
+
+.recipe-calories {
+  margin: 0;
+  font-weight: 900;
+}
+
+.card-bottom {
+  margin-top: 30px;
+  height: 20%;
+}
+.recipe-digest__diet-labels {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.recipe-title {
+  text-align: center;
+  padding: 10px;
+}
+
+.not-found {
+  text-align: center;
+  padding: 20px;
+}
+
+.diet-labels__item {
+  padding: 10px;
+}
+
+.heart-container {
+  display: flex;
+  align-self: flex-end;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.heart-button {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
+  stroke: white;
+  stroke-width: 70px;
+  width: auto;
+  height: auto;
+}
+
+.heart-button--active {
+  margin: 0;
+  color: #e7084f;
+  background-color: rgba(0, 0, 0, 0);
+  width: auto;
+  height: auto;
 }
