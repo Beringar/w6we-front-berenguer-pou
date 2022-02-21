@@ -11,6 +11,20 @@ const robotsReducers = (currentRobots = [], action = {}) => {
         ? [...currentRobots].filter((robot) => robot.id !== action.id)
         : [...currentRobots];
       break;
+    case actionsTypes.createRobot:
+      newState = action.robot
+        ? [...currentRobots, { ...action.robot }]
+        : [...currentRobots];
+      break;
+    case actionsTypes.updateRobot:
+      newState = currentRobots.map((robot) =>
+        robot.id === action.robot.id
+          ? {
+              ...action.robot,
+            }
+          : { ...robot }
+      );
+      break;
     default:
       newState = [...currentRobots];
   }
