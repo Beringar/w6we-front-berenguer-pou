@@ -15,6 +15,8 @@ const RobotWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 8px 20px;
+  background-color: #e0e0e0;
+  border-radius: 12px;
 `;
 
 const Robot = ({ className, robot }) => {
@@ -42,24 +44,26 @@ const Robot = ({ className, robot }) => {
       />
       <p>Speed: {robot.speed}</p>
       <p>Resistance: {robot.resistance}</p>
-      <FontAwesomeIcon
-        className="robot-icons"
-        icon={faEye}
-        onClick={() => goToRobotPage(robot.id)}
-        size="2x"
-      />
-      <FontAwesomeIcon
-        className="robot-icons"
-        icon={faPenToSquare}
-        onClick={() => goToEditPage(robot.id)}
-        size="2x"
-      />
-      <FontAwesomeIcon
-        className="robot-icons"
-        icon={faTrashCan}
-        onClick={deleteRobot}
-        size="2x"
-      />
+      <div className="robot-card__buttons-wrapper">
+        <FontAwesomeIcon
+          className="robot-icons"
+          icon={faEye}
+          onClick={() => goToRobotPage(robot.id)}
+          size="2x"
+        />
+        <FontAwesomeIcon
+          className="robot-icons"
+          icon={faPenToSquare}
+          onClick={() => goToEditPage(robot.id)}
+          size="2x"
+        />
+        <FontAwesomeIcon
+          className="robot-icons"
+          icon={faTrashCan}
+          onClick={deleteRobot}
+          size="2x"
+        />
+      </div>
     </RobotWrapper>
   );
 };
