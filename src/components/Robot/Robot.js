@@ -35,15 +35,15 @@ const Robot = ({ className, robot }) => {
 
   return (
     <RobotWrapper>
-      <h2>{robot.name}</h2>
+      <h3>{robot.name}</h3>
       <img
         className={className}
         src={robot.imageUrl}
         alt={robot.name}
         width="300"
       />
-      <p>Speed: {robot.speed}</p>
-      <p>Resistance: {robot.resistance}</p>
+      <h4>Speed: {robot.speed}</h4>
+      <h4>Resistance: {robot.resistance}</h4>
       <div className="robot-card__buttons-wrapper">
         <FontAwesomeIcon
           className="robot-icons"
