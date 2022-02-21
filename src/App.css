@@ -11,3 +11,19 @@
   justify-content: center;
   color: white;
 }
+
+.robot-card__buttons-wrapper {
+  display: flex;
+  gap: 15px;
+}
+
+.robot-icons {
+  cursor: pointer;
+  transform: scale(1);
+  transition: all 0.2s ease;
+}
+
+.robot-icons:hover {
+  transform: scale(1.2);
+  color: red;
+}

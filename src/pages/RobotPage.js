@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { loadRobotThunk } from "../redux/thunks/robotsThunks";
 
 const RobotPage = () => {
-  const robots = useSelector((state) => state.robots);
   const robot = useSelector((state) => state.robot);
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -13,10 +12,6 @@ const RobotPage = () => {
   useEffect(() => {
     dispatch(loadRobotThunk(id));
   }, [dispatch, id]);
-
-  if (robots.length === 0) {
-    return null;
-  }
 
   return (
     <>
