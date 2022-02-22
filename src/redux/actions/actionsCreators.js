@@ -29,3 +29,8 @@ export const checkUserStatusAction = (user) => ({
   type: actionsTypes.checkUserStatus,
   user,
 });
+
+export const userLoginAction = (user) => ({
+  type: actionsTypes.userLogin,
+  user,
+});
