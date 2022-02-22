@@ -7,20 +7,24 @@ import {
 } from "../actions/actionsCreators";
 
 export const loadRobotsThunk = async (dispatch) => {
-  const response = await fetch(process.env.REACT_APP_HEROKKU_API_URL);
+  const response = await fetch(
+    `${process.env.REACT_APP_HEROKKU_API_URL}robots/`
+  );
   const robots = await response.json();
   dispatch(loadRobotsAction(robots.robots));
 };
 
 export const loadRobotThunk = (id) => async (dispatch) => {
-  const response = await fetch(`${process.env.REACT_APP_HEROKKU_API_URL}${id}`);
+  const response = await fetch(
+    `${process.env.REACT_APP_HEROKKU_API_URL}robots/${id}`
+  );
   const robot = await response.json();
   dispatch(loadRobotAction(robot));
 };
 
 export const deleteRobotThunk = (id) => async (dispatch) => {
   const response = await fetch(
-    `${process.env.REACT_APP_HEROKKU_API_URL}${id}`,
+    `${process.env.REACT_APP_HEROKKU_API_URL}robots/${id}`,
     {
       method: "DELETE",
     }
@@ -32,7 +36,7 @@ export const deleteRobotThunk = (id) => async (dispatch) => {
 
 export const createRobotThunk = (robot) => async (dispatch) => {
   const response = await fetch(
-    `${process.env.REACT_APP_HEROKKU_API_URL}create`,
+    `${process.env.REACT_APP_HEROKKU_API_URL}robots/create`,
     {
       method: "POST",
       headers: {
@@ -47,7 +51,7 @@ export const createRobotThunk = (robot) => async (dispatch) => {
 
 export const updateRobotThunk = (robot) => async (dispatch) => {
   const response = await fetch(
-    `${process.env.REACT_APP_HEROKKU_API_URL}update`,
+    `${process.env.REACT_APP_HEROKKU_API_URL}robots/update`,
     {
       method: "PUT",
       headers: {
