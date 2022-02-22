@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginUserThunk } from "../../redux/thunks/userThunks";
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const initialFormData = {
     username: "",
     password: "",
@@ -22,6 +25,7 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(loginUserThunk(formData));
     resetValues();
   };
 
