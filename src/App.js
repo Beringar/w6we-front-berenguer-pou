@@ -4,6 +4,7 @@ import RobotsPage from "./pages/RobotsPage";
 import RobotPage from "./pages/RobotPage";
 import NewRobotPage from "./pages/NewRobotPage";
 import EditRobotPage from "./pages/EditRobotPage";
+import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Header from "./components/Header/Header";
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="new" element={<NewRobotPage />} />
           <Route path="edit/:id" element={<EditRobotPage />} />
         </Route>
+        <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

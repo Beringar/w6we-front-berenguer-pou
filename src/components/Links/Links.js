@@ -13,6 +13,11 @@ const Links = ({ actionOnClick }) => {
           Create Robot
         </Link>
       </li>
+      <li>
+        <Link onClick={actionOnClick} to="login">
+          Login
+        </Link>
+      </li>
     </ul>
   );
 };
