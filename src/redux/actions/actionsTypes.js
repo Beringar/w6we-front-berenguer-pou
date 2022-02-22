@@ -4,6 +4,5 @@ export const actionsTypes = {
   deleteRobot: "delete-robot",
   createRobot: "create-robot",
   updateRobot: "update-robot",
-  checkUserStatus: "check-user-status",
-  userLogin: "user-login",
+  setUser: "set-user",
 };
