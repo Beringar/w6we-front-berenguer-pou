@@ -1,4 +1,5 @@
 import { setUserAction } from "../actions/actionsCreators";
+import jwtDecode from "jwt-decode";
 
 export const loginUserThunk = (user) => async (dispatch) => {
   const response = await fetch(
@@ -11,6 +12,8 @@ export const loginUserThunk = (user) => async (dispatch) => {
       body: JSON.stringify(user),
     }
   );
-  const newUser = await response.json();
-  dispatch(setUserAction(newUser));
+  const token = await response.json();
+  const { id, name } = await jwtDecode(token.token);
+  localStorage.setItem("userToken", token.token);
+  dispatch(setUserAction({ id, username: user.username, name, token }));
 };
