@@ -2,6 +2,7 @@ import {
   loadRobotsAction,
   loadRobotAction,
   deleteRobotAction,
+  checkUserStatusAction,
 } from "./actionsCreators";
 import { actionsTypes } from "./actionsTypes";
 
@@ -38,6 +39,17 @@ describe("Given an ActionsCreator set", () => {
       const expectedAction = { type: deleteRobotType, id: mockId };
 
       const action = deleteRobotAction(mockId);
+      expect(action).toEqual(expectedAction);
+    });
+  });
+
+  describe("When the function checkUserStatus is called", () => {
+    test("Then it should return an object with type check-user-status and the user passed", () => {
+      const checkUserStatusType = actionsTypes.checkUserStatus;
+      const mockUser = { username: "Paco3", name: "Paco Plaza", token: "xxxx" };
+      const expectedAction = { type: checkUserStatusType, user: mockUser };
+
+      const action = checkUserStatusAction(mockUser);
       expect(action).toEqual(expectedAction);
     });
   });

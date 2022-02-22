@@ -24,3 +24,8 @@ export const updateRobotAction = (robot) => ({
   type: actionsTypes.createRobot,
   robot,
 });
+
+export const checkUserStatusAction = (user) => ({
+  type: actionsTypes.checkUserStatus,
+  user,
+});
