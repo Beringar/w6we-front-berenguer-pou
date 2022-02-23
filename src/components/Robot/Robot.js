@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteRobotThunk } from "../../redux/thunks/robotsThunks";
 
 import styled from "styled-components";
@@ -22,8 +22,9 @@ const RobotWrapper = styled.div`
 const Robot = ({ className, robot }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
 
-  const deleteRobot = () => dispatch(deleteRobotThunk(robot.id));
+  const deleteRobot = () => dispatch(deleteRobotThunk(robot.id, user.token));
 
   const goToRobotPage = (id) => {
     navigate(`/robot/${id}`);

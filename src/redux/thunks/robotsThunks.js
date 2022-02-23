@@ -22,11 +22,15 @@ export const loadRobotThunk = (id) => async (dispatch) => {
   dispatch(loadRobotAction(robot));
 };
 
-export const deleteRobotThunk = (id) => async (dispatch) => {
+export const deleteRobotThunk = (id, token) => async (dispatch) => {
   const response = await fetch(
     `${process.env.REACT_APP_HEROKKU_API_URL}robots/${id}`,
     {
       method: "DELETE",
+      headers: new Headers({
+        Authorization: token,
+        "Content-Type": "application/json",
+      }),
     }
   );
   if (response.ok) {
@@ -34,14 +38,15 @@ export const deleteRobotThunk = (id) => async (dispatch) => {
   }
 };
 
-export const createRobotThunk = (robot) => async (dispatch) => {
+export const createRobotThunk = (robot, token) => async (dispatch) => {
   const response = await fetch(
     `${process.env.REACT_APP_HEROKKU_API_URL}robots/create`,
     {
       method: "POST",
-      headers: {
+      headers: new Headers({
+        Authorization: token,
         "Content-Type": "application/json",
-      },
+      }),
       body: JSON.stringify(robot),
     }
   );
@@ -49,14 +54,15 @@ export const createRobotThunk = (robot) => async (dispatch) => {
   dispatch(createRobotAction(newRobot));
 };
 
-export const updateRobotThunk = (robot) => async (dispatch) => {
+export const updateRobotThunk = (robot, token) => async (dispatch) => {
   const response = await fetch(
     `${process.env.REACT_APP_HEROKKU_API_URL}robots/update`,
     {
       method: "PUT",
-      headers: {
+      headers: new Headers({
+        Authorization: token,
         "Content-Type": "application/json",
-      },
+      }),
       body: JSON.stringify(robot),
     }
   );

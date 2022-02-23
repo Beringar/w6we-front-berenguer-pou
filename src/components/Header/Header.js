@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Links from "../Links/Links";
+import { useSelector } from "react-redux";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -45,10 +46,13 @@ const HeaderContainer = styled.header`
 `;
 
 const Header = () => {
+  const user = useSelector((state) => state.user);
+
   return (
     <>
       <HeaderContainer>
         <Links />
+        {user.name && <span>{`Hola ${user.name}`}</span>}
       </HeaderContainer>
     </>
   );
