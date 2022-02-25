@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Links from "../Links/Links";
-import { useSelector } from "react-redux";
 
 const HeaderContainer = styled.header`
   display: flex;
