@@ -45,9 +45,7 @@ const HeaderContainer = styled.header`
   }
 `;
 
-const Header = () => {
-  const user = useSelector((state) => state.user);
-
+const Header = ({ user }) => {
   return (
     <>
       <HeaderContainer>
