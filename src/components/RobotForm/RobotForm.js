@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import RangeSlider from "react-bootstrap-range-slider";
 import {
   createRobotThunk,
@@ -9,7 +9,6 @@ import {
 
 const RobotForm = ({ data = null }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
   const initialFormData = data
     ? {
@@ -57,10 +56,11 @@ const RobotForm = ({ data = null }) => {
       speed: formData.speed,
       resistance: formData.resistance,
     };
+    const token = localStorage.getItem("userToken");
     if (data !== null) {
-      dispatch(updateRobotThunk({ id: data.id, ...updatedData }, user.token));
+      dispatch(updateRobotThunk({ id: data.id, ...updatedData }, token));
     } else {
-      dispatch(createRobotThunk(updatedData, user.token));
+      dispatch(createRobotThunk(updatedData, token));
     }
     resetValues(true);
   };

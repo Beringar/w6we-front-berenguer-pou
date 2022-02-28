@@ -1,9 +1,6 @@
 import { actionsTypes } from "../actions/actionsTypes";
 
-const userReducers = (
-  currentUser = { username: null, name: null, token: null },
-  action = {}
-) => {
+const userReducers = (currentUser = {}, action = {}) => {
   let newUser;
   if (action.type === actionsTypes.setUser) {
     newUser = { ...action.user };
