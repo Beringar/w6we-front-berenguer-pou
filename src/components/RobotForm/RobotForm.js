@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import RangeSlider from "react-bootstrap-range-slider";
 import {
   createRobotThunk,
@@ -9,7 +9,6 @@ import {
 
 const RobotForm = ({ data = null }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
 
   const initialFormData = data
     ? {
