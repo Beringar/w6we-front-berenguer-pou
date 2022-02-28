@@ -57,10 +57,11 @@ const RobotForm = ({ data = null }) => {
       speed: formData.speed,
       resistance: formData.resistance,
     };
+    const token = localStorage.getItem("userToken");
     if (data !== null) {
-      dispatch(updateRobotThunk({ id: data.id, ...updatedData }, user.token));
+      dispatch(updateRobotThunk({ id: data.id, ...updatedData }, token));
     } else {
-      dispatch(createRobotThunk(updatedData, user.token));
+      dispatch(createRobotThunk(updatedData, token));
     }
     resetValues(true);
   };
